@@ -1,8 +1,9 @@
 package ninja.egg82.updater;
 
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.primitives.Ints;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
@@ -88,7 +89,7 @@ public class BungeeUpdater {
             throw new IllegalArgumentException("version cannot be null.");
         }
 
-        IntList ints = new IntArrayList();
+        List<Integer> ints = new ArrayList<>();
 
         int lastIndex = 0;
         int currentIndex = version.indexOf(separator);
@@ -107,7 +108,7 @@ public class BungeeUpdater {
             ints.add(current);
         }
 
-        return ints.toIntArray();
+        return Ints.toArray(ints);
     }
 
     private int tryParseInt(String value) {
