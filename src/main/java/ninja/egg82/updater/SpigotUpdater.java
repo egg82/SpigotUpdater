@@ -2,6 +2,7 @@ package ninja.egg82.updater;
 
 import com.google.common.primitives.Ints;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -69,7 +70,7 @@ public class SpigotUpdater {
     public String getDownloadLink() { return "https://api.spiget.org/v2/resources/" + resourceId + "/versions/latest/download"; }
 
     private void checkUpdate() throws IOException {
-        latestVersion = JSONWebUtil.getString("https://api.spigotmc.org/legacy/update.php?resource=" + resourceId, "egg82/SpigotUpdater", "GET", null);
+        latestVersion = JSONWebUtil.getString(new URL("https://api.spigotmc.org/legacy/update.php?resource=" + resourceId), "GET", 5000, "egg82/SpigotUpdater");
 
         int[] latest = parseVersion(latestVersion, '.');
         int[] current = parseVersion(plugin.getDescription().getVersion(), '.');
