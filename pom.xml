@@ -6,7 +6,7 @@
 
     <groupId>ninja.egg82</groupId>
     <artifactId>spigot-updater</artifactId>
-    <version>1.0.5</version>
+    <version>1.1.5</version>
 
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
